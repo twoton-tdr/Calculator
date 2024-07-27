@@ -1,6 +1,8 @@
-let previousValue; //to store the value when adding the next number
-let currentValue; //to store the current value and answer
-
+let previousValue=0; //to store the value when adding the next number
+let currentValue=0; //to store the current value and answer
+let previousOperator;
+let currentOperator;
+const equal = document.querySelector("#equals")
 const calculatorScreen = document.querySelector("input");
 
 calculatorScreen.addEventListener("keypress",(event)=>{
@@ -31,9 +33,10 @@ dot.addEventListener("click",(e)=>{
 })
 
 const clearButton = document.querySelector("#clear");
-
+//adding clear button function
 clearButton.addEventListener("click",()=>{
     calculatorScreen.value="";
     previousValue = '';
     currentValue = '';
 })
+
