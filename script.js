@@ -71,7 +71,8 @@ function operation(){
             break;
             case '/': division(previousValue,currentValue)
             break;
-            
+            case '%': percentage(previousValue,currentValue)
+            break;
         }
         previousValue = '';
         return;
@@ -102,6 +103,10 @@ function division(x,y){
     return;
 }
 
+function percentage(x,y){
+    const percent = (x/100)*y;
+    calculatorScreen.value = roundOff(percent);
+}
 function roundOff(num){
     //to round off decimal point to a max of 5 decimals
     num*=100000;
