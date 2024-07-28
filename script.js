@@ -84,20 +84,28 @@ function operation(){
 
 
 function addition(x,y){
-    calculatorScreen.value =Number(x)+Number(y);
+    calculatorScreen.value = roundOff(Number(x)+Number(y));
     return;
 }
 
 function substraction(x,y){
-    calculatorScreen.value = Number(x)-Number(y);
+    calculatorScreen.value = roundOff(Number(x)-Number(y));
     return;
 }
 
 function multiplication(x,y){
-    calculatorScreen.value = Number(x)*Number(y);
+    calculatorScreen.value = roundOff(Number(x)*Number(y));
     return;
 }
 function division(x,y){
-    calculatorScreen.value = Number(x)/Number(y);
+    calculatorScreen.value = roundOff(Number(x)/Number(y));
     return;
+}
+
+function roundOff(num){
+    //to round off decimal point to a max of 5 decimals
+    num*=100000;
+    num = Math.round(num);
+    num = num/100000;
+    return num;
 }
