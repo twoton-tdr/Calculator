@@ -39,6 +39,12 @@ clearButton.addEventListener("click",()=>{
     currentOperator='';
 })
 
+//plus or minus function
+const negative = document.querySelector("#plusOrMinus");
+negative.addEventListener('click',()=>{
+    if(!calculatorScreen.value.includes('-'))
+    calculatorScreen.value = '-'+calculatorScreen.value;
+})
 //listening to clicks from all operators
 const operators = document.querySelectorAll(".operator");
 for (let i = 0; i < operators.length; i++) {
@@ -46,7 +52,7 @@ for (let i = 0; i < operators.length; i++) {
 }
 
 function operation(){
-    
+
     if(!calculatorScreen.value){
         console.log("nothing is in the input");
         return;
@@ -57,9 +63,16 @@ function operation(){
     currentOperator = this.textContent;
 
     if(!previousValue){
+        if(currentOperator === '='){
+            calculatorScreen.value = currentValue;
+            return;
+        }
         //checking valid previousvalue if no function will repeat after next input
         previousValue = currentValue;
-        
+        previousOperator=currentOperator;
+        currentOperator = "";
+        currentValue = "";
+        return;
     }
     else{
         switch(previousOperator){
@@ -74,13 +87,12 @@ function operation(){
             case '%': percentage(previousValue,currentValue)
             break;
         }
+ 
         previousValue = '';
         return;
     }
 
-    previousOperator=currentOperator;
-    currentOperator = "";
-    currentValue = "";
+
 }
 
 
