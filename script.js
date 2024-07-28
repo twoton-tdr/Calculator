@@ -46,41 +46,58 @@ for (let i = 0; i < operators.length; i++) {
 }
 
 function operation(){
+    
     if(!calculatorScreen.value){
         console.log("nothing is in the input");
         return;
     }
 
     currentValue = calculatorScreen.value;
-    calculatorScreen.value='';
+    calculatorScreen.value=''; //clearing screen
     currentOperator = this.textContent;
-    
+
     if(!previousValue){
+        //checking valid previousvalue if no function will repeat after next input
         previousValue = currentValue;
+        
     }
     else{
         switch(previousOperator){
             case '+':addition(previousValue,currentValue)
             break;
-            case '-': console.log("minus is the prev")
+            case '-': substraction(previousValue,currentValue)
             break;
-            case 'x': console.log("mult is the prev")
+            case 'x': multiplication(previousValue,currentValue)
             break;
-            case '/': console.log("div is the prev")
+            case '/': division(previousValue,currentValue)
             break;
+            
         }
         previousValue = '';
         return;
     }
-
 
     previousOperator=currentOperator;
     currentOperator = "";
     currentValue = "";
 }
 
+
 function addition(x,y){
     calculatorScreen.value =Number(x)+Number(y);
     return;
 }
 
+function substraction(x,y){
+    calculatorScreen.value = Number(x)-Number(y);
+    return;
+}
+
+function multiplication(x,y){
+    calculatorScreen.value = Number(x)*Number(y);
+    return;
+}
+function division(x,y){
+    calculatorScreen.value = Number(x)/Number(y);
+    return;
+}
