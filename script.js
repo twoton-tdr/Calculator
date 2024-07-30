@@ -95,6 +95,9 @@ function operation(){
 
 }
 
+//backspace function
+const del =  document.querySelector('#delete');
+del.addEventListener('click',backSpace);
 
 function addition(x,y){
     calculatorScreen.value = roundOff(Number(x)+Number(y));
@@ -125,4 +128,14 @@ function roundOff(num){
     num = Math.round(num);
     num = num/100000;
     return num;
+}
+
+
+
+function backSpace(){
+    let ArrayLength = calculatorScreen.value.length;
+    ArrayLength-=1;
+    if(ArrayLength>=0){
+        calculatorScreen.value = calculatorScreen.value.slice(0,ArrayLength);
+    }
 }
